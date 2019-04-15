@@ -3,16 +3,12 @@ from django.db import models
 
 class Person(models.Model):
     name = models.CharField(
-        max_length=55,
+        max_length=255,
         verbose_name='Name'
-    )
-    surname = models.CharField(
-        max_length=55,
-        verbose_name='Surname'
     )
 
     def __str__(self):
-        return f'{self.name} {self.surname}'
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'Person'
