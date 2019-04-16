@@ -6,6 +6,8 @@ from movieapp import views
 router = routers.DefaultRouter()
 router.register('api/persons', views.PersonView)
 router.register('api/movies', views.MovieView)
+router.register('api/actors', views.ActorView)
+router.register('api/director', views.DirectorView)
 router.register('api/users', views.UserView)
 
 urlpatterns = [
