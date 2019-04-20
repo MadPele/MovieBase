@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets, permissions
 from movieapp.models import Person, Movie, Director, Actor
-from movieapp.serializers import PersonSerializer, MovieSerializer, UserSerializer
+from movieapp.serializers import PersonSerializer, MovieSerializer, UserSerializer, DirectorSerializer, ActorSerializer
 
 
 class PersonView(viewsets.ModelViewSet):
@@ -13,13 +13,13 @@ class PersonView(viewsets.ModelViewSet):
 class DirectorView(viewsets.ModelViewSet):
 
     queryset = Director.objects.all()
-    serializer_class = PersonSerializer
+    serializer_class = DirectorSerializer
 
 
 class ActorView(viewsets.ModelViewSet):
 
     queryset = Actor.objects.all()
-    serializer_class = PersonSerializer
+    serializer_class = ActorSerializer
 
 
 class MovieView(viewsets.ModelViewSet):

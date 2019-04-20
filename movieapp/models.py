@@ -17,19 +17,33 @@ class Person(models.Model):
 
 
 class Actor(models.Model):
-    actor = models.ForeignKey(
+    actor = models.OneToOneField(
         Person,
         on_delete=models.CASCADE,
         verbose_name='Actor'
     )
+
+    def __str__(self):
+        return self.actor.name
+
+    class Meta:
+        verbose_name = 'Actor'
+        verbose_name_plural = 'Actors'
 
 
 class Director(models.Model):
-    actor = models.ForeignKey(
+    director = models.OneToOneField(
         Person,
         on_delete=models.CASCADE,
-        verbose_name='Actor'
+        verbose_name='Director'
     )
+
+    def __str__(self):
+        return self.director.name
+
+    class Meta:
+        verbose_name = 'Director'
+        verbose_name_plural = 'Director'
 
 
 class Movie(models.Model):
@@ -39,13 +53,11 @@ class Movie(models.Model):
     )
     director = models.ForeignKey(
         Director,
-        related_name='movie_director',
         null=True,
         on_delete=models.SET_NULL
     )
     actors = models.ManyToManyField(
         Actor,
-        related_name='movie_actor',
     )
     release_year = models.PositiveSmallIntegerField(verbose_name='Release year')
     description = models.TextField(verbose_name='Description')
